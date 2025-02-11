@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# **Patient Management System**  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a **technical task** assigned by the **Ministry of Health (MOH)**. It is built using modern web technologies to provide an efficient **patient management system**.  
 
-Currently, two official plugins are available:
+## **🚀 Tech Stack**  
+This project is built using the following technologies:  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### **Frontend**  
+- **React 19** – Component-based UI library  
+- **React Router 7** – Client-side routing  
+- **Ant Design** – UI components and styling  
+- **Tailwind CSS** – Utility-first CSS framework  
 
-## Expanding the ESLint configuration
+### **State Management & Data Fetching**  
+- **Zustand** – Lightweight state management  
+- **TanStack React Query** – Data fetching and caching  
+- **Axios** – HTTP client for API requests  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### **Localization**  
+- **i18next** – Internationalization & translations  
 
-- Configure the top-level `parserOptions` property like this:
+### **Development & Tooling**  
+- **TypeScript** – Statically typed JavaScript  
+- **Vite** – Fast development build tool  
+- **ESLint** – Linter for code quality  
+- **Prettier** – Code formatting  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## **📌 Project Setup**  
+To get started with the project, follow these steps:  
+
+### **1️⃣ Install Dependencies**  
+```sh
+npm install
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### **2️⃣ Start Development Server**
+```sh
+npm run dev
+```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+### **3️⃣ Build for Production**
+```sh
+npm run build
 ```
