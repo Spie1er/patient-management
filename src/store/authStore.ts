@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import mockUsersJson from '../database/users.json'
 
-interface User {
+export interface User {
   username: string
   password: string
   role: 'admin' | 'doctor' | 'appuser'

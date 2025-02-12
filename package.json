@@ -7,20 +7,25 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "check-all": "npm outdated && npm audit && npm run lint && npm run type-check"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-query": "^5.66.0",
-    "antd": "^5.24.0",
     "axios": "^1.7.9",
     "dayjs": "^1.11.13",
+    "formik": "^2.4.6",
     "i18next": "^24.2.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.0",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.5",
+    "react-toastify": "^11.0.3",
     "tailwindcss": "^4.0.6",
+    "yup": "^1.6.1",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
@@ -28,7 +33,7 @@
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.19.0",
+    "eslint": "^9.20.1",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",

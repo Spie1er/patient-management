@@ -1,16 +1,21 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
+import { User } from './store/authStore'
 // import Patients from './pages/Patients'
 // import AddPatient from './pages/AddPatient'
 // import EditPatient from './pages/EditPatient'
 // import ProtectedRoute from './components/ProtectedRoute'
 
-const AppRoutes = () => (
+interface AppRoutesProps {
+  user: Omit<User, 'password'> | null
+}
+
+const AppRoutes = (props: AppRoutesProps) => (
   <Routes>
-    <Route path='/' element={<Login />} />
+    {!props.user ? <Route path='/' element={<Login />} /> : null}
     {/* 
       <Route
-        path="/patients"
+        path="/"
         element={
           <ProtectedRoute>
             <Patients />

@@ -4,7 +4,6 @@
 }
 
 @import 'tailwindcss';
-@import 'antd/dist/reset.css';
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
