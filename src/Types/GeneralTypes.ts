@@ -53,9 +53,6 @@ interface FinancialRecord {
   serviceFee: number
 }
 
-type PatientForListing = Omit<
-  Patient,
-  'personalId' | 'gender' | 'condition' | 'financialRecords' | 'dateOfRegistration'
->
+type PatientForListing = Omit<Patient, 'gender' | 'condition' | 'financialRecords'>
 
 export type PatientsListing = PatientForListing[]
