@@ -3,12 +3,25 @@
   font-weight: 400;
 }
 
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}

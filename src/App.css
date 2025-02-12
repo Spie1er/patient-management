@@ -1,7 +1,41 @@
 #root {
-  max-width: 1280px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
-@import "tailwindcss";
+@import 'tailwindcss';
+@import 'antd/dist/reset.css';
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f7fafc;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  margin-bottom: 12px;
+}
+
+nav li button {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  font-size: 16px;
+  color: #333;
+}
+
+nav li button:hover {
+  background-color: #f0f0f0;
+}

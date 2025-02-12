@@ -1,19 +1,41 @@
-import { useTranslation } from 'react-i18next'
 import './App.css'
+import { useAuthStore } from './store/authStore'
+import AppRoutes from './routes'
+import Header from './components/layout/Header'
+// import Sidebar from './components/layout/Sidebar'
+import Footer from './components/layout/Footer'
+import { ConfigProvider } from 'antd'
+
+const darkTheme = {
+  token: {
+    colorPrimary: '#1DA57A',
+    colorBgBase: '#1e1e1e',
+    colorTextBase: '#e0e0e0',
+    colorBorder: '#333',
+    colorInputBg: '#333',
+    colorInputText: '#fff',
+    colorBgElevated: '#333',
+  },
+}
 
 function App() {
-  const { t, i18n } = useTranslation()
+  const user = useAuthStore((state) => state.user)
+  const logout = useAuthStore((state) => state.logout)
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100">
-      <h1 className="text-3xl font-bold">{t('login')}</h1>
-      <button
-        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'ka' : 'en')}
-      >
-        {i18n.language === 'en' ? 'Switch to Georgian' : 'გადართვა ინგლისურზე'}
-      </button>
-    </div>
+    <ConfigProvider theme={darkTheme}>
+      <div className='min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900'>
+        {user && <Header user={user} logout={logout} />}
+
+        <div className='flex'>
+          <main className='flex-1'>
+            <AppRoutes />
+          </main>
+        </div>
+
+        <Footer />
+      </div>
+    </ConfigProvider>
   )
 }
 
