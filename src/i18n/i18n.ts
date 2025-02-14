@@ -72,6 +72,7 @@ const resources = {
       otpFail: 'OTP not correct',
       areYouSure: 'Are you sure?',
       deteleWarning: 'Are you sure you want to delete this patient? This action cannot be undone.',
+      addFinancialRecord: 'Add Financial Record',
     },
   },
   ka: {
@@ -145,6 +146,7 @@ const resources = {
       areYouSure: 'დარწმუნებლი ხართ?',
       deteleWarning:
         'დარწმუნებული ხართ, რომ გსურთ, წაშალოთ პაციენტი? თქვენ ქმედებას უკან ვერ დააბრუნებთ.',
+      addFinancialRecord: 'ფინანსური ჩანაწერის დამატება',
     },
   },
 }

@@ -386,8 +386,8 @@ const AddEditPatient = () => {
         <div className='w-full flex justify-end mt-5'>
           <SuccessButton
             text={id ? t('updatePatient') : t('createPatient')}
-            onClick={() => {}}
-            // disabled={patientHook.loading || !form.dirty} loading={patientHook.loading}
+            onClick={() => hook.savePatient(form.values)}
+            disabled={!form.dirty}
           />
         </div>
       </div>

@@ -36,7 +36,14 @@ const ConfirmDeleteModal = ({
         <p className='text-gray-600 dark:text-gray-300 text-sm mb-5'>{text}</p>
 
         <div className='flex justify-center gap-5'>
-          <DangerButton size='medium' text={t('confirm')} onClick={() => onConfirm(isOpen)} />
+          <DangerButton
+            size='medium'
+            text={t('confirm')}
+            onClick={() => {
+              onConfirm(isOpen)
+              onClose()
+            }}
+          />
           <SecondaryButton size='medium' text={t('cancel')} onClick={onClose} />
         </div>
       </div>

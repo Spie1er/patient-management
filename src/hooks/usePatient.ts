@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import patients from '../database/patients.json'
+import { usePatientStore } from '../store/patientsStore'
 import { Patient, PatientStatuses } from '../Types/GeneralTypes'
+import { useNavigate } from 'react-router-dom'
 
-const initialPatient = {
+const initialPatient: Patient = {
   id: null,
   personalId: null,
   firstName: '',
@@ -27,23 +28,33 @@ const initialPatient = {
 
 interface UsePatient {
   state: Patient
+  savePatient: (patient: Patient) => void
 }
 
 const usePatient = (patientId?: number): UsePatient => {
+  const { patients, addPatient, updatePatient } = usePatientStore()
   const [state, setState] = useState<Patient>(initialPatient)
-
-  const getPatient = async (patientId: number) => {
-    const selectedPatient = patients.find((el) => el.id === patientId) || initialPatient
-    setState(selectedPatient)
-  }
+  const navigate = useNavigate()
 
   useEffect(() => {
-    if (patientId) getPatient(patientId).then()
-  }, [patientId])
+    if (patientId) {
+      const selectedPatient = patients.find((el) => el.id === patientId) || initialPatient
+      setState(selectedPatient)
+    }
+  }, [patientId, patients])
 
-  return {
-    state,
+  const savePatient = (patient: Patient) => {
+    if (patient.id) {
+      updatePatient(patient)
+    } else {
+      const newId = patients.length + 1
+      addPatient({ ...patient, id: newId })
+    }
+
+    navigate('/')
   }
+
+  return { state, savePatient }
 }
 
 export default usePatient

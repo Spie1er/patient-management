@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { FaSun, FaMoon } from 'react-icons/fa'
 import ukFlag from '../../assets/ukflag.svg'
 import kaFlag from '../../assets/kaFlag.svg'
 
@@ -11,20 +12,34 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ user, logout }) => {
   const { t, i18n } = useTranslation()
+  const getInitialTheme = () => {
+    if (typeof window !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme') === 'dark'
+    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
 
-  // ენის შესაცვლელი ფუნქცია
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme())
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+  }, [isDarkMode])
+
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang)
   }
 
-  // მიმდინარე ენა
   const currentLang = i18n.language
-
-  // მეორე ენის არჩევა
   const oppositeLang = currentLang === 'ka' ? 'en' : 'ka'
 
   return (
-    <header className='bg-gray-800 text-white p-4 shadow-md flex justify-between items-center'>
+    <header className='bg-gray-800 dark:bg-gray-900 text-white p-4 shadow-md flex justify-between items-center'>
       <span className='text-lg font-semibold'>
         {t('welcome') + ' ' + user.username + ' ' + `(${t(`${user.role}`)})`}
       </span>
@@ -58,6 +73,17 @@ const Header: React.FC<HeaderProps> = ({ user, logout }) => {
             )}
           </div>
         </div>
+        | |{/* Dark Mode Toggle */}
+        <button
+          onClick={() => setIsDarkMode((prev) => !prev)}
+          className='text-white px-4 py-2 
+          rounded-md transition duration-300 transform 
+          hover:text-yellow-400 hover:scale-105  
+          focus:outline-none focus:ring-2 focus:ring-yellow-500
+          cursor-pointer flex items-center gap-2'
+        >
+          {isDarkMode ? <FaSun size={18} /> : <FaMoon size={18} />}
+        </button>
         | |
         <a
           onClick={logout}

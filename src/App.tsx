@@ -2,7 +2,6 @@ import './App.css'
 import { useAuthStore } from './store/authStore'
 import AppRoutes from './routes'
 import Header from './components/layout/Header'
-// import Sidebar from './components/layout/Sidebar'
 import Footer from './components/layout/Footer'
 import { ToastContainer } from 'react-toastify'
 

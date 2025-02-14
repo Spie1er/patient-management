@@ -95,10 +95,10 @@ const PatientsPage = () => {
             </thead>
             <tbody>
               {patientsHook.state?.length > 0 ? (
-                patientsHook.state.map((patient) => (
+                patientsHook.state.map((patient, index) => (
                   <tr key={patient.id} className='border-b dark:border-gray-700'>
                     <td className='px-6 py-3 text-sm text-gray-900 dark:text-gray-100'>
-                      {patient.id}
+                      {index + 1}
                     </td>
                     <td className='px-6 py-3 text-sm text-gray-900 dark:text-gray-100'>
                       {i18n.language === 'en' ? patient.firstName : patient.firstNameKa}

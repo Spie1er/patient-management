@@ -89,7 +89,7 @@ const FinancialRecordModal = ({
           }
         />
 
-        <div className='mt-4 flex justify-end gap-2'>
+        <div className='mt-4 flex justify-center gap-2'>
           <SecondaryButton text={t('cancel')} onClick={onClose} />
 
           <PrimaryButton

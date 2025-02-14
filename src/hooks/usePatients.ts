@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
-import { Patient, PatientFilterFormValues, PatientsListing } from '../Types/GeneralTypes' // Import all types
-import { filterPatientsListing, transformPatientsForListing } from '../helpers/DataFunctions'
-import patients from '../database/patients.json'
 import { useSearchParams } from 'react-router-dom'
+import { usePatientStore } from '../store/patientsStore'
+import { PatientFilterFormValues, PatientsListing } from '../Types/GeneralTypes'
+import { filterPatientsListing, transformPatientsForListing } from '../helpers/DataFunctions'
 import {
   transformPatientsFilterParamsToUrl,
   transformPatientsUrlToFilterParams,
@@ -28,6 +28,7 @@ interface UsePatients {
 }
 
 const usePatients = (): UsePatients => {
+  const { patients, deletePatient } = usePatientStore()
   const [state, setState] = useState<PatientsListing>([])
   const [showFilter, setShowFilter] = useState(false)
   const [filterOptions, setFilterOptions] = useState<PatientFilterFormValues>(initialFilterOptions)
@@ -35,7 +36,7 @@ const usePatients = (): UsePatients => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const getPatients = (params: PatientFilterFormValues) => {
-    const transformedPatients = transformPatientsForListing(patients as Patient[])
+    const transformedPatients = transformPatientsForListing(patients)
     const filteredPatients = filterPatientsListing(transformedPatients, params)
 
     if (isMounted.current) {
@@ -48,11 +49,6 @@ const usePatients = (): UsePatients => {
     setSearchParams(queryParams, { replace: true })
     setFilterOptions(values)
     getPatients(values)
-  }
-
-  const deletePatient = (id: number) => {
-    const patientsFilteredOut = state.filter((el) => el.id !== id)
-    setState(patientsFilteredOut)
   }
 
   const onReset = () => {
@@ -85,7 +81,8 @@ const usePatients = (): UsePatients => {
     return () => {
       isMounted.current = false
     }
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [patients])
 
   return {
     state,
