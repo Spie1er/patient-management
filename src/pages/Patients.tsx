@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react'
-import patients from '../database/patients.json'
-import { transformPatientsForListing } from '../Helpers/DataFunctions'
-import { Patient, PatientsListing, PatientStatuses } from '../Types/GeneralTypes'
+import { PatientsFilterForm, PatientStatuses } from '../Types/GeneralTypes'
 import { useTranslation } from 'react-i18next'
-import { FaUserPen, FaUserXmark } from 'react-icons/fa6'
+import { FaFilter, FaUserPen, FaUserXmark } from 'react-icons/fa6'
 import { useAuthStore } from '../store/authStore'
+import usePatients from '../hooks/usePatients'
+import { useFormik } from 'formik'
+import Filter from './PatientsFilterForm'
 
 const PatientsPage = () => {
-  const [patientList, setPatientList] = useState<PatientsListing>([])
   const { t, i18n } = useTranslation()
   const { user } = useAuthStore()
+  const patientsHook = usePatients()
 
-  useEffect(() => {
-    const transformedPatients = transformPatientsForListing(patients as Patient[])
-    setPatientList(transformedPatients)
-  }, [])
+  const filterForm: PatientsFilterForm = useFormik({
+    initialValues: patientsHook.filterOptions,
+    enableReinitialize: true,
+    onSubmit: () => {},
+  })
 
   // ვამოწმებთ როლებს, რომ შესაბამისად გამოვუჩინოთ/დავუმალოთ სვეტები მომხმარებელს
   const isAdminOrDoctor = user?.role === 'admin' || user?.role === 'doctor'
@@ -22,9 +23,32 @@ const PatientsPage = () => {
   return (
     <div className='p-8'>
       <div className='overflow-x-auto max-w-full sm:max-w-4xl mx-auto'>
-        <h1 className='text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100'>
-          {t('patientsLIst')}
-        </h1>
+        <div className='flex justify-between items-center mb-6'>
+          <h1 className='text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100'>
+            {t('patientsLIst')}
+          </h1>
+          <button
+            onClick={() => patientsHook.setShowFilter((prevState) => !prevState)}
+            className='flex items-center gap-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-md hover:bg-gray-300 dark:hover:bg-gray-700 transition'
+            aria-label={t('toggleFilter')}
+          >
+            <FaFilter className='text-lg' />
+            <span className='hidden sm:inline'>
+              {patientsHook.showFilter ? t('hideFilter') : t('showFilter')}
+            </span>
+          </button>
+        </div>
+        {patientsHook.showFilter && (
+          <Filter
+            form={filterForm}
+            onSubmit={patientsHook.onFilter}
+            onReset={() => {
+              filterForm.resetForm()
+              patientsHook.onReset()
+            }}
+          />
+        )}
+
         <table className='min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-600'>
           <thead className='bg-gray-200 dark:bg-gray-800'>
             <tr>
@@ -56,8 +80,8 @@ const PatientsPage = () => {
             </tr>
           </thead>
           <tbody>
-            {patientList?.length > 0 ? (
-              patientList.map((patient) => (
+            {patientsHook.state?.length > 0 ? (
+              patientsHook.state.map((patient) => (
                 <tr key={patient.id} className='border-b dark:border-gray-700'>
                   <td className='px-6 py-3 text-sm text-gray-900 dark:text-gray-100'>
                     {patient.id}

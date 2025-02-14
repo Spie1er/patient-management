@@ -1,3 +1,6 @@
+import { FormikState } from 'formik'
+import { ChangeEventHandler } from 'react'
+
 export interface Patient {
   id: number
   personalId: number
@@ -40,9 +43,10 @@ interface Symptoms {
   painLevel: number
 }
 
-interface SelectType {
+export interface SelectType {
   id: number
   label: string
+  disabled?: boolean
 }
 
 interface FinancialRecord {
@@ -56,3 +60,33 @@ interface FinancialRecord {
 type PatientForListing = Omit<Patient, 'gender' | 'condition' | 'financialRecords'>
 
 export type PatientsListing = PatientForListing[]
+
+export interface PatientsFilterForm {
+  values: PatientFilterFormValues
+  handleChange: ChangeEventHandler<HTMLInputElement>
+  setFieldValue: (
+    name: string,
+    value: SelectType | Array<SelectType> | [Date | null, Date | null] | Date | null | string,
+  ) => void
+  dirty: boolean
+  resetForm: (nextState?: Partial<FormikState<PatientFilterFormValues>>) => void
+}
+
+export interface PatientFilterFormValues {
+  firstName?: string
+  lastName?: string
+  personalId?: string
+  registrationStartDate?: string
+  registrationEndDate?: string
+  patientStatus?: SelectType | null
+}
+
+export interface PatientsParamsForUrl {
+  firstName?: string
+  lastName?: string
+  personalId?: string
+  registrationStartDate?: string
+  registrationEndDate?: string
+  patientStatusId?: number
+  patientStatusLabel?: string
+}

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import ukFlag from '../../../public/ukflag.svg'
-import kaFlag from '../../../public/kaFlag.svg'
+import ukFlag from '../../assets/ukflag.svg'
+import kaFlag from '../../assets/kaFlag.svg'
 
 interface HeaderProps {
   user: { username: string; role: string }
@@ -12,15 +12,15 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ user, logout }) => {
   const { t, i18n } = useTranslation()
 
-  // Function to change the language
+  // ენის შესაცვლელი ფუნქცია
   const changeLanguage = (lang: string) => {
     i18n.changeLanguage(lang)
   }
 
-  // Get current language
+  // მიმდინარე ენა
   const currentLang = i18n.language
 
-  // Set the opposite language to display the flag
+  // მეორე ენის არჩევა
   const oppositeLang = currentLang === 'ka' ? 'en' : 'ka'
 
   return (

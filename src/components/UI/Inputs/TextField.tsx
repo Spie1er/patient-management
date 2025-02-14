@@ -18,7 +18,10 @@ interface TextFieldProps {
 const TextField = (props: TextFieldProps) => {
   return (
     <>
-      <label htmlFor={props.id || props.name} className='block text-gray-700 dark:text-gray-300'>
+      <label
+        htmlFor={props.id || props.name}
+        className='block text-gray-700 dark:text-gray-300 mt-2'
+      >
         {props.label}
       </label>
 
@@ -26,7 +29,7 @@ const TextField = (props: TextFieldProps) => {
         id={props.id || props.name}
         name={props.name}
         type='text'
-        className='w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white'
+        className={`w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white`}
         disabled={props.disabled}
         onChange={props.handleChange}
         onBlur={props.handleBlur}
