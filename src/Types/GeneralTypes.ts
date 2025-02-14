@@ -2,18 +2,21 @@ import { FormikState } from 'formik'
 import { ChangeEventHandler } from 'react'
 
 export interface Patient {
-  id: number
-  personalId: number
+  id: number | null
+  personalId: number | null
   firstName: string
   firstNameKa: string
   lastName: string
   lastNameKa: string
-  birthDate: string
+  birthDate: string | null
+  country: string | null
+  countryKa: string | null
+  phoneNumber: string
   gender: Gender
   condition: PatientCondition[]
   financialRecords: FinancialRecord[]
   patientStatus: PatientStatuses
-  dateOfRegistration: string
+  dateOfRegistration: string | null
 }
 
 enum Gender {
@@ -30,8 +33,8 @@ export enum PatientStatuses {
 }
 
 interface PatientCondition {
-  id: number
-  conditionName: SelectType
+  id: number | null
+  conditionName: SelectType | null
   symptoms: Symptoms[]
 }
 
@@ -39,7 +42,7 @@ interface Symptoms {
   id: number
   symptomName: string
   symptomNameKa: string
-  symptomDate: string
+  symptomDate: string | null
   painLevel: number
 }
 
@@ -53,11 +56,14 @@ interface FinancialRecord {
   id: number
   serviceDescription: string
   serviceDescriptionKa: string
-  serviceDate: string
+  serviceDate: string | null
   serviceFee: number
 }
 
-type PatientForListing = Omit<Patient, 'gender' | 'condition' | 'financialRecords'>
+type PatientForListing = Omit<
+  Patient,
+  'gender' | 'condition' | 'financialRecords' | 'phoneNumber' | 'country' | 'countryKa'
+>
 
 export type PatientsListing = PatientForListing[]
 

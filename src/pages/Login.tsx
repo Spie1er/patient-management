@@ -6,9 +6,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import PrimaryButton from '../components/UI/Buttons/PrimaryButton'
-import TextField from '../components/UI/Inputs/TextField'
-import PasswordField from '../components/UI/Inputs/PasswordField'
+import PrimaryButton from '../components/ui/buttons/PrimaryButton'
+import TextField from '../components/ui/inputs/TextField'
+import PasswordField from '../components/ui/inputs/PasswordField'
 
 const Login = () => {
   const { t } = useTranslation()
@@ -71,7 +71,7 @@ const Login = () => {
             />
           </div>
 
-          <PrimaryButton disabled={loading} loading={loading} text={t('login')} />
+          <PrimaryButton disabled={loading} loading={loading} text={t('login')} isFull />
         </form>
       </div>
     </div>

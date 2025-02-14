@@ -7,6 +7,9 @@
     "firstNameKa": "გიორგი",
     "lastNameKa": "გიორგაშვილი",
     "birthDate": "15-06-2019",
+    "country": "Georgia",
+    "countryKa": "საქართველო",
+    "phoneNumber": "557123321",
     "gender": 1,
     "condition": [
       {
@@ -34,6 +37,9 @@
     "firstNameKa": "ნინა",
     "lastNameKa": "ნინუაშვილი",
     "birthDate": "21-09-2006",
+    "country": "France",
+    "countryKa": "საფრანგეთი",
+    "phoneNumber": "557125321",
     "gender": 2,
     "condition": [
       {
@@ -60,6 +66,9 @@
     "firstNameKa": "ჯანო",
     "lastNameKa": "ჯანიაშვილი",
     "birthDate": "12-03-2006",
+    "country": "England",
+    "countryKa": "ინგლისი",
+    "phoneNumber": "551123321",
     "gender": 1,
     "condition": [
       {
@@ -85,6 +94,9 @@
     "firstNameKa": "კაკი",
     "lastNameKa": "კაკაბაძე",
     "birthDate": "30-07-1959",
+    "country": "Georgia",
+    "countryKa": "საქართველო",
+    "phoneNumber": "557123320",
     "gender": 2,
     "condition": [
       {
@@ -111,6 +123,9 @@
       "firstNameKa": "დანიელ",
       "lastNameKa": "დუმბაძე",
       "birthDate": "11-10-1959",
+      "country": "Georgia",
+      "countryKa": "საქართველო",
+      "phoneNumber": "550023321",
       "gender": 1,
       "condition": [
         {

@@ -1,12 +1,12 @@
 import { useTranslation } from 'react-i18next'
 import { PatientFilterFormValues, PatientsFilterForm } from '../Types/GeneralTypes'
 import { statusOptions, statusOptionsKa } from '../helpers/SelectOptions'
-import TextField from '../components/UI/Inputs/TextField'
-import PrimaryButton from '../components/UI/Buttons/PrimaryButton'
-import SecondaryButton from '../components/UI/Buttons/SecondaryButton'
-import DateRangeField from '../components/UI/Inputs/DateRangeField'
+import TextField from '../components/ui/inputs/TextField'
+import PrimaryButton from '../components/ui/buttons/PrimaryButton'
+import SecondaryButton from '../components/ui/buttons/SecondaryButton'
+import DateRangeField from '../components/ui/inputs/DateRangeField'
 import { transformStringToDateNullable } from '../helpers/DataFunctions'
-import SelectField from '../components/UI/Inputs/SelectField'
+import SelectField from '../components/ui/inputs/SelectField'
 
 interface FilterFormProps {
   form: PatientsFilterForm

@@ -45,3 +45,49 @@ export const statusOptionsKa = [
     label: 'პენსიონერი',
   },
 ]
+
+export const conditions = [
+  {
+    id: 1,
+    label: 'დიაბეტი',
+  },
+  {
+    id: 2,
+    label: 'მაღალი წნევა',
+  },
+  {
+    id: 3,
+    label: 'ასთმა',
+  },
+  {
+    id: 4,
+    label: 'შაკიკი',
+  },
+  {
+    id: 5,
+    label: 'ართრიტი',
+  },
+]
+
+export const countries = [
+  {
+    id: 1,
+    label: 'საქართველო',
+  },
+  {
+    id: 2,
+    label: 'აზერბაიჯანი',
+  },
+  {
+    id: 3,
+    label: 'სომხეთი',
+  },
+  {
+    id: 4,
+    label: 'დიდი ბრიტანეთი',
+  },
+  {
+    id: 5,
+    label: 'საფრანგეთი',
+  },
+]

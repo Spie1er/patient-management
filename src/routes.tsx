@@ -2,8 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Login from './pages/Login'
 import { User } from './store/authStore'
 import Patients from './pages/Patients'
-// import AddPatient from './pages/AddPatient'
-// import EditPatient from './pages/EditPatient'
+import AddEditPatient from './pages/AddEditPatient'
 import ProtectedRoute from './components/ProtectedRoute'
 
 interface AppRoutesProps {
@@ -22,24 +21,24 @@ const AppRoutes = (props: AppRoutesProps) => (
         </ProtectedRoute>
       }
     />
-    {/* 
-       <Route
-        path="/patients/add"
-        element={
-          <ProtectedRoute>
-            <AddPatient />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/patients/edit/:id"
-        element={
-          <ProtectedRoute>
-            <EditPatient />
-          </ProtectedRoute>
-        }
-      /> 
-      */}
+
+    <Route
+      path='/patients/add'
+      element={
+        <ProtectedRoute>
+          <AddEditPatient />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path='/patients/edit/:id'
+      element={
+        <ProtectedRoute>
+          <AddEditPatient />
+        </ProtectedRoute>
+      }
+    />
+
     <Route path='*' element={<Navigate to='/' replace />} />
   </Routes>
 )
