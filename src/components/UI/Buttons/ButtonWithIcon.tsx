@@ -24,11 +24,11 @@ const ButtonWithIcon = (props: ButtonWithIconProps) => {
       case 'small':
         return 'p-1 text-sm gap-2'
       case 'medium':
-        return 'p-2 text-base gap-2 mt-2'
+        return 'p-2 text-base gap-2'
       case 'large':
-        return 'p-3 text-lg gap-2 mt-2'
+        return 'p-3 text-lg gap-2'
       default:
-        return 'p-2 text-base gap-2 mt-2'
+        return 'p-2 text-base gap-2'
     }
   }
 

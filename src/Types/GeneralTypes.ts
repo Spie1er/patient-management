@@ -9,17 +9,18 @@ export interface Patient {
   lastName: string
   lastNameKa: string
   birthDate: string | null
-  country: string | null
-  countryKa: string | null
+  country: SelectType | null
+  countryKa: SelectType | null
   phoneNumber: string
+  phoneVerified: boolean
   gender: Gender
-  condition: PatientCondition[]
+  condition: PatientCondition
   financialRecords: FinancialRecord[]
   patientStatus: PatientStatuses
   dateOfRegistration: string | null
 }
 
-enum Gender {
+export enum Gender {
   MALE = 1,
   FEMALE = 2,
 }
@@ -52,7 +53,7 @@ export interface SelectType {
   disabled?: boolean
 }
 
-interface FinancialRecord {
+export interface FinancialRecord {
   id: number
   serviceDescription: string
   serviceDescriptionKa: string
@@ -62,7 +63,13 @@ interface FinancialRecord {
 
 type PatientForListing = Omit<
   Patient,
-  'gender' | 'condition' | 'financialRecords' | 'phoneNumber' | 'country' | 'countryKa'
+  | 'gender'
+  | 'condition'
+  | 'financialRecords'
+  | 'phoneNumber'
+  | 'country'
+  | 'countryKa'
+  | 'phoneVerified'
 >
 
 export type PatientsListing = PatientForListing[]
@@ -95,4 +102,39 @@ export interface PatientsParamsForUrl {
   registrationEndDate?: string
   patientStatusId?: number
   patientStatusLabel?: string
+}
+
+export interface PatientForm {
+  values: Patient
+  errors: PatientFormErrors
+  handleChange: ChangeEventHandler<HTMLInputElement>
+  setFieldValue: (
+    name: string,
+    value:
+      | SelectType
+      | Array<SelectType>
+      | Date
+      | null
+      | string
+      | boolean
+      | number
+      | Symptoms[]
+      | FinancialRecord[],
+  ) => void
+  dirty: boolean
+  resetForm: (nextState?: Partial<FormikState<Patient>>) => void
+}
+
+interface PatientFormErrors {
+  personalId?: string
+  firstName?: string
+  firstNameKa?: string
+  lastName?: string
+  lastNameKa?: string
+  birthDate?: string
+  country?: string
+  countryKa?: string
+  phoneNumber?: string
+  phoneVerified?: string
+  gender?: string
 }

@@ -24,6 +24,7 @@ interface UsePatients {
   onFilter: (values: PatientFilterFormValues) => void
   filterOptions: PatientFilterFormValues
   onReset: () => void
+  deletePatient: (id: number) => void
 }
 
 const usePatients = (): UsePatients => {
@@ -47,6 +48,11 @@ const usePatients = (): UsePatients => {
     setSearchParams(queryParams, { replace: true })
     setFilterOptions(values)
     getPatients(values)
+  }
+
+  const deletePatient = (id: number) => {
+    const patientsFilteredOut = state.filter((el) => el.id !== id)
+    setState(patientsFilteredOut)
   }
 
   const onReset = () => {
@@ -88,6 +94,7 @@ const usePatients = (): UsePatients => {
     onFilter,
     filterOptions,
     onReset,
+    deletePatient,
   }
 }
 

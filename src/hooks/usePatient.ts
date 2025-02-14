@@ -13,23 +13,14 @@ const initialPatient = {
   country: null,
   countryKa: null,
   phoneNumber: '',
+  phoneVerified: false,
   gender: 1,
-  condition: [
-    {
-      id: null,
-      conditionName: null,
-      symptoms: [{ id: 1, symptomName: '', symptomNameKa: '', symptomDate: null, painLevel: 50 }],
-    },
-  ],
-  financialRecords: [
-    {
-      id: 1,
-      serviceDescription: '',
-      serviceDescriptionKa: '',
-      serviceDate: null,
-      serviceFee: 0,
-    },
-  ],
+  condition: {
+    id: null,
+    conditionName: null,
+    symptoms: [],
+  },
+  financialRecords: [],
   patientStatus: PatientStatuses.SOCIALY_VULNARABLE,
   dateOfRegistration: null,
 }
@@ -38,7 +29,7 @@ interface UsePatient {
   state: Patient
 }
 
-const usePatient = (patientId: number): UsePatient => {
+const usePatient = (patientId?: number): UsePatient => {
   const [state, setState] = useState<Patient>(initialPatient)
 
   const getPatient = async (patientId: number) => {

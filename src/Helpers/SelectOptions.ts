@@ -84,7 +84,7 @@ export const countries = [
   },
   {
     id: 4,
-    label: 'დიდი ბრიტანეთი',
+    label: 'გაერთიანებული სამეფო',
   },
   {
     id: 5,

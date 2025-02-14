@@ -71,7 +71,9 @@ const Login = () => {
             />
           </div>
 
-          <PrimaryButton disabled={loading} loading={loading} text={t('login')} isFull />
+          <div className='mt-8'>
+            <PrimaryButton disabled={loading} loading={loading} text={t('login')} isFull />
+          </div>
         </form>
       </div>
     </div>

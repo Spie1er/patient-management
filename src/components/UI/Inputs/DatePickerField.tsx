@@ -1,30 +1,23 @@
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import {
-  transformDateToString,
-  transformStringToDateNullable,
-} from '../../../helpers/DataFunctions'
 import { FaCalendarAlt } from 'react-icons/fa'
+import { transformDateToString } from '../../../helpers/DataFunctions'
 
-interface DateRangeFieldProps {
+interface DatePickerFieldProps {
   name: string
   id?: string
   label?: string
-  dateFormat?: string
-  startName?: string
-  endName?: string
-  startDate?: string
-  endDate?: string
   minDate?: Date
   maxDate?: Date
   isClearable?: boolean
   // placeholder?: string
   disabled?: boolean
   error?: string
-  setFieldValue: (name: string, value: string | null | [Date | null, Date | null]) => void
+  value: string | null
+  setFieldValue: (name: string, value: Date | string | null) => void
 }
 
-const DateRangeField = (props: DateRangeFieldProps) => {
+const DatePickerField = (props: DatePickerFieldProps) => {
   return (
     <>
       <label
@@ -34,28 +27,19 @@ const DateRangeField = (props: DateRangeFieldProps) => {
         {props.label}
       </label>
 
-      <div className='relative'>
+      <div className='relative customDatePickerWidth'>
         <DatePicker
           id={props.id || props.name}
-          selectsRange
-          startDate={transformStringToDateNullable(props.startDate)}
-          endDate={transformStringToDateNullable(props.endDate)}
           minDate={props.minDate}
           maxDate={props.maxDate}
-          onChange={(update: [Date | null, Date | null]) => {
-            const [start, end] = update
-            if (props.startName && props.endName) {
-              props.setFieldValue(props.startName, transformDateToString(start))
-              props.setFieldValue(props.endName, transformDateToString(end))
-            } else {
-              props.setFieldValue(props.name, update)
-            }
-          }}
+          onChange={(date) =>
+            date && props.setFieldValue(props.name, transformDateToString(date as Date))
+          }
+          value={props.value || ''}
           className={`w-full mt-2 p-2 pl-10 border rounded-md shadow-sm focus:ring-2
              focus:ring-blue-500 transition duration-300  dark:bg-gray-700 dark:text-white ${
                props.error ? 'border-red-500' : 'border-gray-300'
              }`}
-          withPortal
           disabled={props.disabled}
         />
         <FaCalendarAlt className='absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400' />
@@ -66,4 +50,4 @@ const DateRangeField = (props: DateRangeFieldProps) => {
   )
 }
 
-export default DateRangeField
+export default DatePickerField

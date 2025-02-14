@@ -30,7 +30,7 @@ const SuccessButton = (props: SuccessButtonProps) => {
   return (
     <button
       type={props.type || 'submit'}
-      className={`mt-2 bg-green-500 text-white rounded hover:bg-green-600 transition duration-300
+      className={`bg-green-500 text-white rounded hover:bg-green-600 transition duration-300
          ${getSizeClasses()} ${props.isFull ? 'w-full' : ''} 
          ${props.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       disabled={props.disabled}

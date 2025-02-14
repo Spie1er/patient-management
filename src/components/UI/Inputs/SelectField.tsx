@@ -8,6 +8,7 @@ import {
 } from '@headlessui/react'
 import { FaChevronDown, FaCheck } from 'react-icons/fa'
 import { SelectType } from '../../../Types/GeneralTypes'
+import { useTranslation } from 'react-i18next'
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -26,6 +27,9 @@ interface SelectFieldProps {
 
 const SelectField = (props: SelectFieldProps) => {
   const { options, value, onChange, label, error, id, name, placeholder } = props
+
+  const { t } = useTranslation()
+
   return (
     <div className='w-full'>
       <label htmlFor={id || name} className='block text-gray-700 mt-2 dark:text-gray-300'>
@@ -47,7 +51,9 @@ const SelectField = (props: SelectFieldProps) => {
                 error ? 'border-red-500' : 'border-gray-300'
               }`}
             >
-              <span className='block truncate text-left'>{value?.label || placeholder}</span>
+              <span className='block truncate text-left'>
+                {value?.label ? t(`${value?.label}`) : placeholder}
+              </span>
               <span className='absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none'>
                 <FaChevronDown className='h-4 w-4 text-gray-400' aria-hidden='true' />
               </span>

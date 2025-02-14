@@ -50,13 +50,13 @@ export const filterPatientsListing = (
   }
 
   if (params.personalId) {
-    filteredValues = filteredValues.filter((p) => p.personalId.toString() === params.personalId)
+    filteredValues = filteredValues.filter((p) => p.personalId?.toString() === params.personalId)
   }
 
   if (params.registrationStartDate) {
     filteredValues = filteredValues.filter(
       (p) =>
-        transformStringToDate(p.dateOfRegistration) >=
+        transformStringToDate(p.dateOfRegistration as string) >=
         transformStringToDate(params.registrationStartDate as string),
     )
   }
@@ -64,7 +64,7 @@ export const filterPatientsListing = (
   if (params.registrationEndDate) {
     filteredValues = filteredValues.filter(
       (p) =>
-        transformStringToDate(p.dateOfRegistration) <=
+        transformStringToDate(p.dateOfRegistration as string) <=
         transformStringToDate(params.registrationEndDate as string),
     )
   }

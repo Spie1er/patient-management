@@ -30,7 +30,7 @@ const PrimaryButton = (props: PrimaryButtonProps) => {
   return (
     <button
       type={props.type || 'submit'}
-      className={`mt-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300
+      className={`bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300
          ${getSizeClasses()} ${props.isFull ? 'w-full' : ''} 
          ${props.disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
       disabled={props.disabled}

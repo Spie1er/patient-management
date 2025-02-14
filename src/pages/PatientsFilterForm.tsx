@@ -5,7 +5,6 @@ import TextField from '../components/ui/inputs/TextField'
 import PrimaryButton from '../components/ui/buttons/PrimaryButton'
 import SecondaryButton from '../components/ui/buttons/SecondaryButton'
 import DateRangeField from '../components/ui/inputs/DateRangeField'
-import { transformStringToDateNullable } from '../helpers/DataFunctions'
 import SelectField from '../components/ui/inputs/SelectField'
 
 interface FilterFormProps {
@@ -60,8 +59,8 @@ const PatientFilterForm = ({ form, onSubmit, onReset }: FilterFormProps) => {
             label={t('registrationRange')}
             startName='registrationStartDate'
             endName='registrationEndDate'
-            startDate={transformStringToDateNullable(form.values.registrationStartDate)}
-            endDate={transformStringToDateNullable(form.values.registrationEndDate)}
+            startDate={form.values.registrationStartDate}
+            endDate={form.values.registrationEndDate}
             setFieldValue={form.setFieldValue}
           />
         </div>
