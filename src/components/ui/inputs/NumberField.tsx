@@ -29,7 +29,9 @@ const NumberField = (props: NumberFieldProps) => {
         id={props.id || props.name}
         name={props.name}
         type='number'
-        className={`w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white`}
+        className={`w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white ${
+          props.error ? 'border-red-500' : 'border-gray-300'
+        }`}
         disabled={props.disabled}
         onChange={props.handleChange}
         onBlur={props.handleBlur}

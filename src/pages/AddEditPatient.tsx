@@ -1,7 +1,6 @@
 import TextField from '../components/ui/inputs/TextField'
 import SelectField from '../components/ui/inputs/SelectField'
 import { useTranslation } from 'react-i18next'
-import PrimaryButton from '../components/ui/buttons/PrimaryButton'
 import { useState } from 'react'
 import { conditions, countries } from '../helpers/SelectOptions'
 import OtpModal from '../components/ui/modals/OtpModal'
@@ -16,6 +15,8 @@ import RadioField from '../components/ui/inputs/RadioField'
 import { IoMdAddCircle, IoMdTrash } from 'react-icons/io'
 import { toast } from 'react-toastify'
 import FinancialRecordModal from '../components/ui/modals/FinancialRecordModal'
+import { patientValidation } from '../helpers/Validation'
+import PhoneNumberField from '../components/ui/inputs/PhoneNumberField'
 
 const AddEditPatient = () => {
   const [otpModalOpen, setOtpModalOpen] = useState(false)
@@ -29,6 +30,8 @@ const AddEditPatient = () => {
   const form: PatientForm = useFormik({
     initialValues: hook.state,
     enableReinitialize: true,
+    validate: patientValidation,
+    validateOnChange: false,
     onSubmit: () => {},
   })
 
@@ -49,7 +52,12 @@ const AddEditPatient = () => {
     form.setFieldValue('condition.symptoms', updatedSymptoms)
   }
 
-  console.log(form.values)
+  const handleRemoveFinancialRecord = (index: number) => {
+    const updatedRecords = form.values.financialRecords.filter((_, i) => i !== index)
+    form.setFieldValue('financialRecords', updatedRecords)
+  }
+
+  console.log(form.errors)
   return (
     <>
       {otpModalOpen && (
@@ -93,6 +101,7 @@ const AddEditPatient = () => {
                 name='firstNameKa'
                 label='სახელი'
                 placeholder='შეიყვანეთ სახელი'
+                required
                 handleChange={form.handleChange}
                 value={form.values.firstNameKa}
                 error={form.errors.firstNameKa}
@@ -104,6 +113,7 @@ const AddEditPatient = () => {
                 name='lastNameKa'
                 label='გვარი'
                 placeholder='შეიყვანეთ გვარი'
+                required
                 handleChange={form.handleChange}
                 value={form.values.lastNameKa}
                 error={form.errors.lastNameKa}
@@ -136,6 +146,7 @@ const AddEditPatient = () => {
               <DatePickerField
                 name='birthDate'
                 label={t('birthDate')}
+                required
                 setFieldValue={form.setFieldValue}
                 value={form.values.birthDate}
                 error={form.errors.birthDate}
@@ -171,6 +182,7 @@ const AddEditPatient = () => {
               <SelectField
                 name='countryKa'
                 label={t('country')}
+                required
                 options={countries}
                 onChange={form.setFieldValue}
                 placeholder={t('selectCountry')}
@@ -179,36 +191,20 @@ const AddEditPatient = () => {
               />
             </div>
 
-            <div style={{ position: 'relative' }}>
-              <TextField
+            <div>
+              <PhoneNumberField
                 name='phoneNumber'
                 label={t('phoneNumber')}
                 placeholder='5XX XXX XXX'
+                required
+                hasOtpCheck
+                setOtpModalOpen={setOtpModalOpen}
+                otpButtonDisabled={form.values.phoneNumber.length < 9}
+                otpVerified={form.values.phoneVerified}
                 handleChange={form.handleChange}
                 value={form.values.phoneNumber}
                 error={form.errors.phoneNumber}
               />
-              <div
-                style={{
-                  position: 'absolute',
-                  top: '74%',
-                  right: '8px',
-                  transform: 'translateY(-50%)',
-                }}
-              >
-                {form.values.phoneVerified ? (
-                  <span className='px-2 py-1 rounded text-xs bg-green-200 text-green-800 dark:bg-green-700 dark:text-green-100'>
-                    {t('verified')}
-                  </span>
-                ) : (
-                  <PrimaryButton
-                    onClick={() => setOtpModalOpen(true)}
-                    disabled={form.values.phoneNumber.length < 9}
-                    text={t('sendCode')}
-                    size='small'
-                  />
-                )}
-              </div>
             </div>
           </div>
         </div>
@@ -347,12 +343,15 @@ const AddEditPatient = () => {
                   <th className='border border-gray-300 dark:border-gray-500 px-4 py-3 text-left text-gray-700 dark:text-gray-300'>
                     {t('fee')}
                   </th>
+                  <th className='border border-gray-300 dark:border-gray-500 px-2 py-3 text-left text-gray-700 dark:text-gray-300'>
+                    {t('delete')}
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {form.values.financialRecords.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className='text-center text-gray-500 dark:text-gray-400 py-4'>
+                    <td colSpan={4} className='text-center text-gray-500 dark:text-gray-400 py-4'>
                       {t('noRecordFound')}
                     </td>
                   </tr>
@@ -375,6 +374,17 @@ const AddEditPatient = () => {
                       <td className='border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300'>
                         {rec.serviceFee}
                       </td>
+                      <td className='border border-gray-300 dark:border-gray-600 px-1 py-3 text-gray-700 dark:text-gray-300'>
+                        <div className='flex justify-center items-center'>
+                          <button
+                            type='button'
+                            onClick={() => handleRemoveFinancialRecord(index)}
+                            className='text-red-500 hover:text-red-700'
+                          >
+                            <IoMdTrash className='text-lg' />
+                          </button>
+                        </div>
+                      </td>
                     </tr>
                   ))
                 )}
@@ -386,7 +396,12 @@ const AddEditPatient = () => {
         <div className='w-full flex justify-end mt-5'>
           <SuccessButton
             text={id ? t('updatePatient') : t('createPatient')}
-            onClick={() => hook.savePatient(form.values)}
+            onClick={async () => {
+              const formErrors = await form.validateForm()
+              if (Object.keys(formErrors).length === 0 && formErrors.constructor === Object) {
+                hook.savePatient(form.values)
+              }
+            }}
             disabled={!form.dirty}
           />
         </div>

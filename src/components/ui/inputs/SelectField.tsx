@@ -23,18 +23,25 @@ interface SelectFieldProps {
   label?: string
   error?: string
   placeholder?: string
+  required?: boolean
 }
 
 const SelectField = (props: SelectFieldProps) => {
   const { options, value, onChange, label, error, id, name, placeholder } = props
-
   const { t } = useTranslation()
 
   return (
     <div className='w-full'>
-      <label htmlFor={id || name} className='block text-gray-700 mt-2 dark:text-gray-300'>
-        {label}
-      </label>
+      {label && (
+        <label
+          htmlFor={props.id || props.name}
+          className={`block text-gray-700 dark:text-gray-300 mt-2${
+            props.required ? ' required' : ''
+          }`}
+        >
+          {props.label}
+        </label>
+      )}
       <Listbox
         value={value || { id: '', label: '' }}
         onChange={(val: SelectType | null) => {
@@ -110,7 +117,11 @@ const SelectField = (props: SelectFieldProps) => {
           </div>
         )}
       </Listbox>
-      {error && <p className='text-sm text-red-500 mt-1'>{error}</p>}
+      {error && (
+        <p className='text-sm text-red-500 mt-1'>
+          {error} {/* Ensure that error message is properly passed and rendered */}
+        </p>
+      )}
     </div>
   )
 }

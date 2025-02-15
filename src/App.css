@@ -51,3 +51,14 @@ nav li button:hover {
   input {
   width: 100%;
 }
+
+.required {
+  &:after {
+    content: '*';
+    display: inline-block;
+    font-weight: bold;
+    color: red;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+}

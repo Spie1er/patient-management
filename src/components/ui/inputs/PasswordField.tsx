@@ -30,7 +30,9 @@ const PasswordField = (props: PasswordFieldProps) => {
           id={props.id || props.name}
           name={props.name}
           type={showPassword ? 'text' : 'password'}
-          className='w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white pr-10'
+          className={`w-full p-2 mt-2 border rounded bg-gray-50 dark:bg-gray-700 dark:text-white pr-10 ${
+            props.error ? 'border-red-500' : 'border-gray-300'
+          }`}
           disabled={props.disabled}
           onChange={props.handleChange}
           onBlur={props.handleBlur}

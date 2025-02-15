@@ -46,27 +46,31 @@ const Login = () => {
         <h2 className='text-2xl dark:text-gray-200 font-bold mb-6 text-center'>{t('login')}</h2>
 
         <form onSubmit={loginForm.handleSubmit} className='space-y-4'>
-          <TextField
-            id='username'
-            name='username'
-            label={t('username')}
-            handleChange={loginForm.handleChange}
-            handleBlur={loginForm.handleBlur}
-            value={loginForm.values.username}
-            touched={loginForm.touched.username}
-            error={loginForm.errors.username}
-          />
+          <div>
+            <TextField
+              id='username'
+              name='username'
+              label={t('username')}
+              handleChange={loginForm.handleChange}
+              handleBlur={loginForm.handleBlur}
+              value={loginForm.values.username}
+              touched={loginForm.touched.username}
+              error={loginForm.errors.username}
+            />
+          </div>
 
-          <PasswordField
-            id='password'
-            name='password'
-            label={t('password')}
-            handleChange={loginForm.handleChange}
-            handleBlur={loginForm.handleBlur}
-            value={loginForm.values.password}
-            touched={loginForm.touched.password}
-            error={loginForm.errors.password}
-          />
+          <div>
+            <PasswordField
+              id='password'
+              name='password'
+              label={t('password')}
+              handleChange={loginForm.handleChange}
+              handleBlur={loginForm.handleBlur}
+              value={loginForm.values.password}
+              touched={loginForm.touched.password}
+              error={loginForm.errors.password}
+            />
+          </div>
 
           <div className='mt-6'>
             <PrimaryButton disabled={loading} loading={loading} text={t('login')} isFull />

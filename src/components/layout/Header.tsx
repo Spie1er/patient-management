@@ -14,13 +14,14 @@ const Header: React.FC<HeaderProps> = ({ user, logout }) => {
   const { t, i18n } = useTranslation()
 
   const getInitialTheme = () => {
-    if (typeof window !== 'undefined' && localStorage.getItem('theme')) {
-      return localStorage.getItem('theme') === 'dark'
+    if (typeof window !== 'undefined') {
+      const storedTheme = localStorage.getItem('theme')
+      if (storedTheme) return storedTheme === 'dark'
     }
     return window.matchMedia('(prefers-color-scheme: dark)').matches
   }
 
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme())
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(getInitialTheme)
 
   useEffect(() => {
     if (isDarkMode) {

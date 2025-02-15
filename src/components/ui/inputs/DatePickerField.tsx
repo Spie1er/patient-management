@@ -15,6 +15,7 @@ interface DatePickerFieldProps {
   error?: string
   value: string | null
   setFieldValue: (name: string, value: Date | string | null) => void
+  required?: boolean
 }
 
 const DatePickerField = (props: DatePickerFieldProps) => {
@@ -22,7 +23,9 @@ const DatePickerField = (props: DatePickerFieldProps) => {
     <>
       <label
         htmlFor={props.id || props.name}
-        className='block text-gray-700 dark:text-gray-300 mt-2'
+        className={`block text-gray-700 dark:text-gray-300 mt-2${
+          props.required ? ' required' : ''
+        }`}
       >
         {props.label}
       </label>

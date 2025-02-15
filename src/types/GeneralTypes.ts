@@ -1,4 +1,4 @@
-import { FormikState } from 'formik'
+import { FormikErrors, FormikState } from 'formik'
 import { ChangeEventHandler } from 'react'
 
 export interface Patient {
@@ -108,6 +108,7 @@ export interface PatientForm {
   values: Patient
   errors: PatientFormErrors
   handleChange: ChangeEventHandler<HTMLInputElement>
+  validateForm: () => Promise<FormikErrors<Patient>>
   setFieldValue: (
     name: string,
     value:
@@ -125,7 +126,7 @@ export interface PatientForm {
   resetForm: (nextState?: Partial<FormikState<Patient>>) => void
 }
 
-interface PatientFormErrors {
+export interface PatientFormErrors {
   personalId?: string
   firstName?: string
   firstNameKa?: string
