@@ -138,4 +138,5 @@ export interface PatientFormErrors {
   phoneNumber?: string
   phoneVerified?: string
   gender?: string
+  patientStatus?: string
 }

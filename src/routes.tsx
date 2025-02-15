@@ -26,7 +26,7 @@ const AppRoutes = (props: AppRoutesProps) => (
       path='/patients/add'
       element={
         <ProtectedRoute>
-          <AddEditPatient />
+          <AddEditPatient key='add' />
         </ProtectedRoute>
       }
     />
@@ -34,7 +34,7 @@ const AppRoutes = (props: AppRoutesProps) => (
       path='/patients/edit/:id'
       element={
         <ProtectedRoute>
-          <AddEditPatient />
+          <AddEditPatient key='edit' />
         </ProtectedRoute>
       }
     />

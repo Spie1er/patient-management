@@ -10,7 +10,7 @@ interface DatePickerFieldProps {
   minDate?: Date
   maxDate?: Date
   isClearable?: boolean
-  // placeholder?: string
+  placeholder?: string
   disabled?: boolean
   error?: string
   value: string | null
@@ -39,6 +39,7 @@ const DatePickerField = (props: DatePickerFieldProps) => {
             date && props.setFieldValue(props.name, transformDateToString(date as Date))
           }
           value={props.value || ''}
+          placeholderText={props.placeholder}
           className={`w-full mt-2 p-2 pl-10 border rounded-md shadow-sm focus:ring-2
              focus:ring-blue-500 transition duration-300  dark:bg-gray-700 dark:text-white ${
                props.error ? 'border-red-500' : 'border-gray-300'

@@ -13,6 +13,7 @@ interface NumberFieldProps {
   handleBlur?: FocusEventHandler
   touched?: boolean
   label?: string
+  required?: boolean
 }
 
 const NumberField = (props: NumberFieldProps) => {
@@ -20,7 +21,9 @@ const NumberField = (props: NumberFieldProps) => {
     <>
       <label
         htmlFor={props.id || props.name}
-        className='block text-gray-700 dark:text-gray-300 mt-2'
+        className={`block text-gray-700 dark:text-gray-300 mt-2${
+          props.required ? ' required' : ''
+        }`}
       >
         {props.label}
       </label>
@@ -41,7 +44,7 @@ const NumberField = (props: NumberFieldProps) => {
       />
 
       {/* ერორის ადგილი */}
-      {props.touched && props.error && <p className='text-red-500 text-sm mt-1'>{props.error}</p>}
+      {props.error && <p className='text-red-500 text-sm mt-1'>{props.error}</p>}
     </>
   )
 }

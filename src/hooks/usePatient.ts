@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { usePatientStore } from '../store/patientsStore'
 import { Patient, PatientStatuses } from '../types/GeneralTypes'
 import { useNavigate } from 'react-router-dom'
+import { transformNumberToDateString } from '../helpers/DataFunctions'
 
 const initialPatient: Patient = {
   id: null,
@@ -44,11 +45,16 @@ const usePatient = (patientId?: number): UsePatient => {
   }, [patientId, patients])
 
   const savePatient = (patient: Patient) => {
+    const nowDate = Date.now()
     if (patient.id) {
       updatePatient(patient)
     } else {
       const newId = patients.length + 1
-      addPatient({ ...patient, id: newId })
+      addPatient({
+        ...patient,
+        id: newId,
+        dateOfRegistration: transformNumberToDateString(nowDate),
+      })
     }
 
     navigate('/')

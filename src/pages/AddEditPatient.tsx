@@ -2,7 +2,7 @@ import TextField from '../components/ui/inputs/TextField'
 import SelectField from '../components/ui/inputs/SelectField'
 import { useTranslation } from 'react-i18next'
 import { useState } from 'react'
-import { conditions, countries } from '../helpers/SelectOptions'
+import { conditions, countries, statusOptions, statusOptionsKa } from '../helpers/SelectOptions'
 import OtpModal from '../components/ui/modals/OtpModal'
 import ButtonWithIcon from '../components/ui/buttons/ButtonWithIcon'
 import SuccessButton from '../components/ui/buttons/SuccessButton'
@@ -17,6 +17,7 @@ import { toast } from 'react-toastify'
 import FinancialRecordModal from '../components/ui/modals/FinancialRecordModal'
 import { patientValidation } from '../helpers/Validation'
 import PhoneNumberField from '../components/ui/inputs/PhoneNumberField'
+import NumberField from '../components/ui/inputs/NumberField'
 
 const AddEditPatient = () => {
   const [otpModalOpen, setOtpModalOpen] = useState(false)
@@ -57,7 +58,7 @@ const AddEditPatient = () => {
     form.setFieldValue('financialRecords', updatedRecords)
   }
 
-  console.log(form.errors)
+  console.log(form.values)
   return (
     <>
       {otpModalOpen && (
@@ -141,11 +142,44 @@ const AddEditPatient = () => {
                 error={form.errors.lastName}
               />
             </div>
+            <div className='hideNumberFieldArrows'>
+              <NumberField
+                name='personalId'
+                label={t('personalId')}
+                required
+                placeholder={t('personalIdPlaceholder')}
+                handleChange={form.handleChange}
+                value={form.values.personalId}
+                error={form.errors.personalId}
+              />
+            </div>
+
+            <div>
+              <div>
+                <SelectField
+                  name='patientStatus'
+                  label={t('patientStatus')}
+                  required
+                  placeholder={t('patientStatus')}
+                  options={i18n.language === 'en' ? statusOptions : statusOptionsKa}
+                  onChange={(name, value) => {
+                    form.setFieldValue(name, value.id)
+                  }}
+                  value={
+                    i18n.language === 'en'
+                      ? statusOptions[form.values.patientStatus]
+                      : statusOptionsKa[form.values.patientStatus]
+                  }
+                  error={form.errors.patientStatus}
+                />
+              </div>
+            </div>
 
             <div>
               <DatePickerField
                 name='birthDate'
                 label={t('birthDate')}
+                placeholder={t('enterBirthDate')}
                 required
                 setFieldValue={form.setFieldValue}
                 value={form.values.birthDate}

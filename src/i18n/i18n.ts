@@ -73,6 +73,8 @@ const resources = {
       areYouSure: 'Are you sure?',
       deteleWarning: 'Are you sure you want to delete this patient? This action cannot be undone.',
       addFinancialRecord: 'Add Financial Record',
+      personalIdPlaceholder: 'Enter personal ID',
+      enterBirthDate: 'აირჩიეთ დაბადების თარიღი',
     },
   },
   ka: {
@@ -147,7 +149,8 @@ const resources = {
       deteleWarning:
         'დარწმუნებული ხართ, რომ გსურთ, წაშალოთ პაციენტი? თქვენ ქმედებას უკან ვერ დააბრუნებთ.',
       addFinancialRecord: 'ფინანსური ჩანაწერის დამატება',
-      
+      personalIdPlaceholder: 'შეიყვანეთ პირადი ნომერი',
+      enterBirthDate: 'აირჩიეთ დაბადების თარიღი',
     },
   },
 }

@@ -117,11 +117,7 @@ const SelectField = (props: SelectFieldProps) => {
           </div>
         )}
       </Listbox>
-      {error && (
-        <p className='text-sm text-red-500 mt-1'>
-          {error} {/* Ensure that error message is properly passed and rendered */}
-        </p>
-      )}
+      {error && <p className='text-sm text-red-500 mt-1'>{error}</p>}
     </div>
   )
 }

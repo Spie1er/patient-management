@@ -1,10 +1,11 @@
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
 #root {
   margin: 0 auto;
   text-align: left;
   min-width: 343px;
 }
-
-@import 'tailwindcss';
 
 body {
   font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -61,4 +62,14 @@ nav li button:hover {
     margin-left: 3px;
     margin-right: 3px;
   }
+}
+
+.hideNumberFieldArrows input[type='number']::-webkit-outer-spin-button,
+.hideNumberFieldArrows input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.hideNumberFieldArrows input[type='number'] {
+  -moz-appearance: textfield; /* Firefox */
 }
