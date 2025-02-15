@@ -6,9 +6,9 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import PrimaryButton from '../components/ui/buttons/PrimaryButton'
-import TextField from '../components/ui/inputs/TextField'
-import PasswordField from '../components/ui/inputs/PasswordField'
+import PrimaryButton from '../components/bui/buttons/PrimaryButton'
+import TextField from '../components/bui/binputs/TextField'
+import PasswordField from '../components/bui/binputs/PasswordField'
 
 const Login = () => {
   const { t } = useTranslation()

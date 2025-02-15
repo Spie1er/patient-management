@@ -1,4 +1,4 @@
-import { Patient, PatientFilterFormValues, PatientsListing } from '../Types/GeneralTypes'
+import { Patient, PatientFilterFormValues, PatientsListing } from '../btypes/GeneralTypes'
 import { format, parse } from 'date-fns'
 
 export const transformPatientsForListing = (patients: Patient[]): PatientsListing => {

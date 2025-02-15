@@ -1,5 +1,5 @@
 import qs from 'qs'
-import { PatientFilterFormValues, PatientsParamsForUrl } from '../Types/GeneralTypes'
+import { PatientFilterFormValues, PatientsParamsForUrl } from '../btypes/GeneralTypes'
 
 export const parse = (url: string, options = {}): unknown => {
   return qs.parse(url, {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { usePatientStore } from '../store/patientsStore'
-import { Patient, PatientStatuses } from '../Types/GeneralTypes'
+import { Patient, PatientStatuses } from '../btypes/GeneralTypes'
 import { useNavigate } from 'react-router-dom'
 
 const initialPatient: Patient = {

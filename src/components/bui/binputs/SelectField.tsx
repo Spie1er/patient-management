@@ -7,7 +7,7 @@ import {
   Transition,
 } from '@headlessui/react'
 import { FaChevronDown, FaCheck } from 'react-icons/fa'
-import { SelectType } from '../../../Types/GeneralTypes'
+import { SelectType } from '../../../btypes/GeneralTypes'
 import { useTranslation } from 'react-i18next'
 
 function classNames(...classes: string[]) {
