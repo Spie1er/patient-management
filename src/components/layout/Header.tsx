@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { FaSun, FaMoon } from 'react-icons/fa'
-import ukFlag from '../../assets/ukflag.svg'
-import kaFlag from '../../assets/kaFlag.svg'
+import ukflag from '../../assets/ukflag.svg'
+import geflag from '../../assets/geflag.svg'
 
 interface HeaderProps {
   user: { username: string; role: string }
@@ -51,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ user, logout }) => {
           focus:outline-none focus:ring-2 focus:ring-blue-500
           cursor-pointer'
         >
-          პაციენტების სია
+          {t('patientsLIst')}
         </Link>
         |
         <Link
@@ -61,15 +61,15 @@ const Header: React.FC<HeaderProps> = ({ user, logout }) => {
           focus:outline-none focus:ring-2 focus:ring-blue-500
           cursor-pointer'
         >
-          პაციენტის დამატება
+          {t('createPatient')}
         </Link>
         | |
         <div className='flex items-center px-5 hover:scale-105 transition duration-300 transform'>
           <div onClick={() => changeLanguage(oppositeLang)} className='cursor-pointer'>
             {oppositeLang === 'en' ? (
-              <img src={ukFlag} alt='English Flag' className='w-6 h-6' />
+              <img src={ukflag} alt='English Flag' className='w-6 h-6' />
             ) : (
-              <img src={kaFlag} alt='Georgian Flag' className='w-6 h-6' />
+              <img src={geflag} alt='Georgian Flag' className='w-6 h-6' />
             )}
           </div>
         </div>
