@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { usePatientStore } from '../store/patientsStore'
-import { PatientFilterFormValues, PatientsListing } from '../btypes/GeneralTypes'
-import { filterPatientsListing, transformPatientsForListing } from '../bhelpers/DataFunctions'
+import { PatientFilterFormValues, PatientsListing } from '../types/GeneralTypes'
+import { filterPatientsListing, transformPatientsForListing } from '../helpers/DataFunctions'
 import {
   transformPatientsFilterParamsToUrl,
   transformPatientsUrlToFilterParams,
-} from '../bhelpers/QuerryTransforms'
+} from '../helpers/QuerryTransforms'
 
 const initialFilterOptions: PatientFilterFormValues = {
   firstName: undefined,

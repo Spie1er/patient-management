@@ -1,4 +1,4 @@
-import { PatientsFilterForm, PatientStatuses } from '../btypes/GeneralTypes'
+import { PatientsFilterForm, PatientStatuses } from '../types/GeneralTypes'
 import { useTranslation } from 'react-i18next'
 import { FaFilter, FaUserPen, FaUserXmark } from 'react-icons/fa6'
 import { useAuthStore } from '../store/authStore'
@@ -7,7 +7,7 @@ import { useFormik } from 'formik'
 import Filter from './PatientsFilterForm'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import SweetAlert from '../components/bui/modals/SweetAlert'
+import SweetAlert from '../components/ui/modals/SweetAlert'
 
 const PatientsPage = () => {
   const [openAlert, setOpenAlert] = useState<number | null>(null)

@@ -1,7 +1,7 @@
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { FaCalendarAlt } from 'react-icons/fa'
-import { transformDateToString } from '../../../bhelpers/DataFunctions'
+import { transformDateToString } from '../../../helpers/DataFunctions'
 
 interface DatePickerFieldProps {
   name: string

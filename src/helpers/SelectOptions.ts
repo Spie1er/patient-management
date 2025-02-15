@@ -1,4 +1,4 @@
-import { PatientStatuses } from '../btypes/GeneralTypes'
+import { PatientStatuses } from '../types/GeneralTypes'
 
 export const statusOptions = [
   {

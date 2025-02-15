@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Patient } from '../btypes/GeneralTypes'
+import { Patient } from '../types/GeneralTypes'
 import patients from '../database/patients.json'
 
 interface PatientStoreState {

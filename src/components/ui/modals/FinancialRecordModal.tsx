@@ -1,9 +1,9 @@
 import PrimaryButton from '../buttons/PrimaryButton'
 import SecondaryButton from '../buttons/SecondaryButton'
-import TextField from '../binputs/TextField'
-import DatePickerField from '../binputs/DatePickerField'
-import NumberField from '../binputs/NumberField'
-import { FinancialRecord } from '../../../btypes/GeneralTypes'
+import TextField from '../inputs/TextField'
+import DatePickerField from '../inputs/DatePickerField'
+import NumberField from '../inputs/NumberField'
+import { FinancialRecord } from '../../../types/GeneralTypes'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
