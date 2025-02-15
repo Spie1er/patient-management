@@ -377,7 +377,7 @@ const AddEditPatient = () => {
                   <th className='border border-gray-300 dark:border-gray-500 px-4 py-3 text-left text-gray-700 dark:text-gray-300'>
                     {t('fee')}
                   </th>
-                  <th className='border border-gray-300 dark:border-gray-500 px-2 py-3 text-left text-gray-700 dark:text-gray-300'>
+                  <th className='border border-gray-300 dark:border-gray-500 px-2 py-3 text-left text-gray-700 dark:text-gray-300 hidden md:table-cell'>
                     {t('delete')}
                   </th>
                 </tr>
@@ -408,7 +408,7 @@ const AddEditPatient = () => {
                       <td className='border border-gray-300 dark:border-gray-600 px-4 py-3 text-gray-700 dark:text-gray-300'>
                         {rec.serviceFee}
                       </td>
-                      <td className='border border-gray-300 dark:border-gray-600 px-1 py-3 text-gray-700 dark:text-gray-300'>
+                      <td className='border border-gray-300 dark:border-gray-600 px-1 py-3 text-gray-700 dark:text-gray-300 hidden md:table-cell'>
                         <div className='flex justify-center items-center'>
                           <button
                             type='button'

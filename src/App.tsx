@@ -25,6 +25,7 @@ function App() {
   return (
     <>
       <ToastContainer position='bottom-right' autoClose={3000} theme={'colored'} />
+      {/* დავამატოთ  min-w-[480px] თუ საჭიროა რომ დილითის ღილაკი გამოჩნდეს ფინანსური ჩანაწერების ცხრილში */}
       <div className='min-h-screen flex flex-col bg-gray-100 dark:bg-gray-900'>
         {user && <Header user={user} logout={logout} />}
         <div className='flex'>
