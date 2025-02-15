@@ -51,7 +51,7 @@ const PasswordField = (props: PasswordFieldProps) => {
         </button>
       </div>
       {/* ერორის ადგილი */}
-      {props.touched && props.error && <p className='text-red-500 text-sm mt-1'>{props.error}</p>}
+      {props.error && <p className='text-red-500 text-sm mt-1'>{props.error}</p>}
     </div>
   )
 }

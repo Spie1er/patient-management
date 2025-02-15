@@ -22,6 +22,7 @@ const Login = () => {
       username: '',
       password: '',
     },
+    validateOnChange: false,
     validationSchema: Yup.object({
       username: Yup.string().required(t('username') + t('isRequired')),
       password: Yup.string().required(t('password') + t('isRequired')),
@@ -40,6 +41,7 @@ const Login = () => {
     },
   })
 
+  console.log(loginForm.errors)
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4'>
       <div className='bg-white dark:bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md'>
@@ -52,9 +54,7 @@ const Login = () => {
               name='username'
               label={t('username')}
               handleChange={loginForm.handleChange}
-              handleBlur={loginForm.handleBlur}
               value={loginForm.values.username}
-              touched={loginForm.touched.username}
               error={loginForm.errors.username}
             />
           </div>
@@ -65,9 +65,7 @@ const Login = () => {
               name='password'
               label={t('password')}
               handleChange={loginForm.handleChange}
-              handleBlur={loginForm.handleBlur}
               value={loginForm.values.password}
-              touched={loginForm.touched.password}
               error={loginForm.errors.password}
             />
           </div>
