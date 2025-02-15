@@ -41,37 +41,34 @@ const Login = () => {
   })
 
   return (
-    <div className='flex justify-center items-center bg-gray-100 dark:bg-gray-900 p-10'>
-      <div className='bg-white dark:bg-gray-800 p-8 rounded-lg shadow-lg w-96'>
-        <h2 className='text-2xl dark:text-gray-200 font-bold mb-4 text-center'>{t('login')}</h2>
+    <div className='flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4'>
+      <div className='bg-white dark:bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md'>
+        <h2 className='text-2xl dark:text-gray-200 font-bold mb-6 text-center'>{t('login')}</h2>
+
         <form onSubmit={loginForm.handleSubmit} className='space-y-4'>
-          <div>
-            <TextField
-              id='username'
-              name='username'
-              label={t('username')}
-              handleChange={loginForm.handleChange}
-              handleBlur={loginForm.handleBlur}
-              value={loginForm.values.username}
-              touched={loginForm.touched.username}
-              error={loginForm.errors.username}
-            />
-          </div>
+          <TextField
+            id='username'
+            name='username'
+            label={t('username')}
+            handleChange={loginForm.handleChange}
+            handleBlur={loginForm.handleBlur}
+            value={loginForm.values.username}
+            touched={loginForm.touched.username}
+            error={loginForm.errors.username}
+          />
 
-          <div>
-            <PasswordField
-              id='password'
-              name='password'
-              label={t('password')}
-              handleChange={loginForm.handleChange}
-              handleBlur={loginForm.handleBlur}
-              value={loginForm.values.password}
-              touched={loginForm.touched.password}
-              error={loginForm.errors.password}
-            />
-          </div>
+          <PasswordField
+            id='password'
+            name='password'
+            label={t('password')}
+            handleChange={loginForm.handleChange}
+            handleBlur={loginForm.handleBlur}
+            value={loginForm.values.password}
+            touched={loginForm.touched.password}
+            error={loginForm.errors.password}
+          />
 
-          <div className='mt-8'>
+          <div className='mt-6'>
             <PrimaryButton disabled={loading} loading={loading} text={t('login')} isFull />
           </div>
         </form>

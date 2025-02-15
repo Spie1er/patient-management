@@ -3,14 +3,14 @@
   font-weight: 400;
 }
 
-body {
+/* body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 412px;
+  min-width: 300px;
   min-height: 100vh;
   font-family: 'Helvetica Neue', sans-serif;
-}
+} */
 
 a {
   text-decoration: none;
