@@ -41,7 +41,6 @@ const Login = () => {
     },
   })
 
-  console.log(loginForm.errors)
   return (
     <div className='flex justify-center items-center min-h-screen bg-gray-100 dark:bg-gray-900 px-4'>
       <div className='bg-white dark:bg-gray-800 p-6 md:p-8 rounded-lg shadow-lg w-full max-w-md'>

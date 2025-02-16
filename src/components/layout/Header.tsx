@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import ukflag from '../../assets/ukflag.svg'
 import geflag from '../../assets/geflag.svg'
@@ -70,12 +70,22 @@ const Header: React.FC<HeaderProps> = ({ user, logout }) => {
           </div>
 
           <nav className='min-w-[340px] flex flex-wrap justify-center sm:justify-end gap-4'>
-            <Link to='/' className='text-sm hover:text-blue-400 transition'>
+            <NavLink
+              to='/'
+              className={({ isActive }) =>
+                isActive ? 'text-blue-400 text-sm' : 'text-sm hover:text-blue-400 transition'
+              }
+            >
               {t('patientsLIst')}
-            </Link>
-            <Link to='/patients/add' className='text-sm hover:text-blue-400 transition'>
+            </NavLink>
+            <NavLink
+              to='/patients/add'
+              className={({ isActive }) =>
+                isActive ? 'text-blue-400 text-sm' : 'text-sm hover:text-blue-400 transition'
+              }
+            >
               {t('createPatient')}
-            </Link>
+            </NavLink>
             <button onClick={logout} className='text-sm hover:text-red-400 transition'>
               {t('logout')}
             </button>

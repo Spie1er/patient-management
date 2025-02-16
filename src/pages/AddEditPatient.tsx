@@ -58,7 +58,6 @@ const AddEditPatient = () => {
     form.setFieldValue('financialRecords', updatedRecords)
   }
 
-  console.log(form.values)
   return (
     <>
       {otpModalOpen && (
