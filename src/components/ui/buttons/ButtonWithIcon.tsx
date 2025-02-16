@@ -22,7 +22,7 @@ const ButtonWithIcon = (props: ButtonWithIconProps) => {
       case 'xs':
         return 'p-1 text-xs gap-1'
       case 'small':
-        return 'p-1 text-sm gap-2'
+        return 'p-1 text-sm'
       case 'medium':
         return 'p-2 text-base gap-2'
       case 'large':

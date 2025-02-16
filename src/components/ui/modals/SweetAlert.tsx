@@ -20,7 +20,7 @@ const ConfirmDeleteModal = ({
 }: ConfirmDeleteModalProps) => {
   const { t } = useTranslation()
 
-  if (!isOpen) return null
+  if (isOpen == null) return null
 
   return (
     <div

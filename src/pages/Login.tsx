@@ -30,7 +30,7 @@ const Login = () => {
     onSubmit: async (values) => {
       setLoading(true)
       setTimeout(() => {
-        if (login(values.username, values.password)) {
+        if (login(values.username.trim(), values.password)) {
           toast.success(t('loginSuccess'))
           navigate('/patients')
         } else {

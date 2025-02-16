@@ -60,7 +60,6 @@ const OtpModal = ({ isOpen, onClose, digitNumber, onConfirm }: OtpModalProps) =>
     onConfirm(otp.join(''))
     onClose()
     setOtp(new Array(digitNumber).fill('')) // დახურვის მერე დავარესეტოთ
-    //TODO @Kote სადმე ფორმაში შევინახოთ რომ ნომერი დაკონფირმდა თუ რაღაც წინასწარ შეთანხმებულ კოდს დაემთხვევა.
   }
 
   if (!isOpen) return null

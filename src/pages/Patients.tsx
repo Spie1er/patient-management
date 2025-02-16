@@ -9,8 +9,12 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import SweetAlert from '../components/ui/modals/SweetAlert'
 
+//TODO @KOTE დასაწერია ცალკე ფეგინეიშენის კომპონენტი, რომელსაც perPage ექნება ასარჩევი
+const ITEMS_PER_PAGE = 5
+
 const PatientsPage = () => {
   const [openAlert, setOpenAlert] = useState<number | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
   const { t, i18n } = useTranslation()
   const { user } = useAuthStore()
   const patientsHook = usePatients()
@@ -21,18 +25,25 @@ const PatientsPage = () => {
     onSubmit: () => {},
   })
 
-  // Check user role to conditionally display columns
+  // ვამოწმებთ როლებს, რომ შესაბამისად გამოვაჩინოთ/დავმალოთ წაშლა-ედიტირების ღილაკები
   const isAdminOrDoctor = user?.role === 'admin' || user?.role === 'doctor'
+
+  const totalPages = Math.ceil(patientsHook.state.length / ITEMS_PER_PAGE)
+  const paginatedPatients = patientsHook.state.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  )
 
   return (
     <>
       {openAlert && (
         <SweetAlert
+          key={`patient-${openAlert}`}
           isOpen={openAlert}
           onClose={() => setOpenAlert(null)}
           onConfirm={patientsHook.deletePatient}
           firstText={t('areYouSure')}
-          text={t('deteleWarning')}
+          text={t('deteleWarningPatient')}
         />
       )}
       <div className='p-4 sm:p-8'>
@@ -99,11 +110,11 @@ const PatientsPage = () => {
                 </tr>
               </thead>
               <tbody>
-                {patientsHook.state?.length > 0 ? (
-                  patientsHook.state.map((patient, index) => (
+                {paginatedPatients.length > 0 ? (
+                  paginatedPatients.map((patient, index) => (
                     <tr key={patient.id} className='border-b dark:border-gray-700'>
                       <td className='px-4 sm:px-6 py-2 text-xs sm:text-sm text-gray-900 dark:text-gray-100'>
-                        {index + 1}
+                        {(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
                       </td>
                       <td className='px-4 sm:px-6 py-2 text-xs sm:text-sm text-gray-900 dark:text-gray-100'>
                         {i18n.language === 'en' ? patient.firstName : patient.firstNameKa}
@@ -165,6 +176,21 @@ const PatientsPage = () => {
               </tbody>
             </table>
           </div>
+          {totalPages > 1 && (
+            <div className='mt-4 flex justify-center space-x-2'>
+              {[...Array(totalPages)].map((_, i) => (
+                <button
+                  key={i}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === i + 1 ? 'bg-blue-600 text-white' : 'bg-gray-300 text-gray-700'
+                  }`}
+                  onClick={() => setCurrentPage(i + 1)}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>

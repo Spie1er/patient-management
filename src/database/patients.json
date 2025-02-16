@@ -137,6 +137,145 @@
       ],
       "patientStatus": 4,
       "dateOfRegistration": "11-02-2025"
-    }
+    },
+    {
+      "id": 6,
+      "personalId": 24241266451,
+      "firstName": "Zaza",
+      "lastName": "Zazadze",
+      "firstNameKa": "ზაზა",
+      "lastNameKa": "ზაზაძე",
+      "birthDate": "15-06-2019",
+      "country": { "id": 1, "label": "Georgia"},
+      "countryKa": { "id": 1, "label": "საქართველო"},
+      "phoneNumber": "557123321",
+      "phoneVerified": true,
+      "gender": 1,
+      "condition":  {
+          "id": 1,
+          "conditionName": { "id": 1, "label": "diabetes" },
+          "symptoms": [
+            { "id": 1, "symptomName": "Fatigue", "symptomNameKa": "დაღლა", "symptomDate": "01-02-2024", "painLevel": 30 },
+            { "id": 2, "symptomName": "Blurred Vision", "symptomNameKa": "მხედველობის დაბინდვა", "symptomDate": "03-02-2024", "painLevel": 50 }
+          ]
+        },
+      "financialRecords": [
+        { "id": 1, "serviceDescription": "Blood Test", "serviceDescriptionKa": "სისხლის ანალიზი", "serviceDate": "10-01-2024", "serviceFee": 50 },
+        { "id": 2, "serviceDescription": "Consultation", "serviceDescriptionKa": "კონსულტაცია", "serviceDate": "02-02-2024", "serviceFee": 80 }
+      ],
+      "patientStatus": 1,
+      "dateOfRegistration": "10-02-2021"
+    },
+    
+    {
+      "id": 7,
+      "personalId": 90931356821,
+      "firstName": "Lela",
+      "lastName": "Liluashvili",
+      "firstNameKa": "ლელა",
+      "lastNameKa": "ლილუაშვილი",
+      "birthDate": "21-09-2006",
+      "country": { "id": 5, "label": "France"},
+      "countryKa": { "id": 5, "label": "საფრანგეთი"},
+      "phoneNumber": "557125321",
+      "phoneVerified": false,
+      "gender": 2,
+      "condition": {
+          "id": 2,
+          "conditionName": { "id": 2, "label": "hypertension" },
+          "symptoms": [
+            { "id": 3, "symptomName": "Headache", "symptomNameKa": "თავის ტკვილი", "symptomDate": "28-01-2024", "painLevel": 60 },
+            { "id": 4, "symptomName": "Dizziness", "symptomNameKa": "თავის გაბრუება", "symptomDate": "05-02-2024", "painLevel": 40 }
+          ]
+        },
+      "financialRecords": [
+        { "id": 3, "serviceDescription": "MRI Scan", "serviceDescriptionKa": "მაგნიტო-რეზონანსული ტომოგრაფია", "serviceDate": "06-02-2024", "serviceFee": 250 },
+        { "id": 4, "serviceDescription": "Medication", "serviceDescriptionKa": "წამლებით მკურნალობა", "serviceDate": "08-02-2024", "serviceFee": 30 }
+      ],
+      "patientStatus": 2,
+      "dateOfRegistration": "10-02-2022"
+    },
+    {
+      "id": 8,
+      "personalId": 57998412448,
+      "firstName": "Ilia",
+      "lastName": "Khiliashvili",
+      "firstNameKa": "ილია",
+      "lastNameKa": "ხილიაშვილი",
+      "birthDate": "12-03-2006",
+      "country": { "id": 4, "label": "United Kingdom"},
+      "countryKa": { "id": 4, "label": "გაერთიანებული სამეფო"},
+      "phoneNumber": "551123321",
+      "phoneVerified": false,
+      "gender": 1,
+      "condition": {
+          "id": 3,
+          "conditionName": { "id": 3, "label": "asthma" },
+          "symptoms": [
+            { "id": 5, "symptomName": "Shortness of breath", "symptomNameKa": "ქოშინი", "symptomDate": "15-01-2024", "painLevel": 70 }
+          ]
+        },
+      "financialRecords": [
+        { "id": 5, "serviceDescription": "Pulmonary Function Test", "serviceDescriptionKa": "ფილტვის ფუნქციის ტესტი", "serviceDate": "20-01-2024", "serviceFee": 100 },
+        { "id": 6, "serviceDescription": "Inhaler Prescription", "serviceDescriptionKa": "ინჰალატორის დანიშვნა", "serviceDate": "22-01-2024", "serviceFee": 40 }
+      ],
+      "patientStatus": 3,
+      "dateOfRegistration": "10-05-2022"
+    },
+    {
+      "id": 9,
+      "personalId": 99879106481,
+      "firstName": "David",
+      "lastName": "Davitashvili",
+      "firstNameKa": "დავით",
+      "lastNameKa": "დავითაშვილი",
+      "birthDate": "30-07-1959",
+      "country": { "id": 1, "label": "Georgia"},
+      "countryKa": { "id": 1, "label": "საქართველო"},
+      "phoneNumber": "557123320",
+      "phoneVerified": true,
+      "gender": 2,
+      "condition": {
+          "id": 4,
+          "conditionName": { "id": 4, "label": "migraine" },
+          "symptoms": [
+            { "id": 6, "symptomName": "Severe Headache", "symptomNameKa": "მძიმე თავის ტკივილი", "symptomDate": "01-02-2024", "painLevel": 80 },
+            { "id": 7, "symptomName": "Nausea", "symptomNameKa": "ღებინება", "symptomDate": "02-02-2024", "painLevel": 50 }
+          ]
+        },
+      "financialRecords": [
+        { "id": 7, "serviceDescription": "Neurologist Consultation", "serviceDescriptionKa": "ნევროლოგთან კონსულტაცია", "serviceDate": "03-02-2024", "serviceFee": 120 },
+        { "id": 8, "serviceDescription": "CT Scan", "serviceDescriptionKa": "კომპიუტერული ტომოგრაფია", "serviceDate": "05-02-2024", "serviceFee": 300 }
+      ],
+      "patientStatus": 4,
+      "dateOfRegistration": "10-03-2021"
+    },
+      {
+        "id": 10,
+        "personalId": 11787779668,
+        "firstName": "Sumbat",
+        "lastName": "Kurapalati",
+        "firstNameKa": "სუმბატ",
+        "lastNameKa": "კურაპალატი",
+        "birthDate": "11-10-1959",
+        "country": { "id": 1, "label": "Georgia"},
+        "countryKa": { "id": 1, "label": "საქართველო"},
+        "phoneNumber": "550023321",
+        "phoneVerified": true,
+        "gender": 1,
+        "condition": {
+            "id": 5,
+            "conditionName": { "id": 5, "label": "arthritis" },
+            "symptoms": [
+              { "id": 8, "symptomName": "Joint Pain", "symptomNameKa": "სახსრების ტკივილი", "symptomDate": "2024-01-18", "painLevel": 50 }
+            ]
+          },
+        "financialRecords": [
+          { "id": 9, "serviceDescription": "X-Ray", "serviceDescriptionKa": "რენტგენი", "serviceDate": "02-12-2024", "serviceFee": 75 },
+          { "id": 10, "serviceDescription": "Physical Therapy", "serviceDescriptionKa": "ფიზიკური თერაპია", "serviceDate": "15-02-2024", "serviceFee": 150 }
+        ],
+        "patientStatus": 3,
+        "dateOfRegistration": "11-02-2025"
+      }
   ]
   

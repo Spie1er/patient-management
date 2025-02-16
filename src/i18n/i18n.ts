@@ -71,10 +71,17 @@ const resources = {
       verified: 'Verified',
       otpFail: 'OTP not correct',
       areYouSure: 'Are you sure?',
-      deteleWarning: 'Are you sure you want to delete this patient? This action cannot be undone.',
+      deteleWarningPatient:
+        'Are you sure you want to delete this patient? This action cannot be undone.',
+      deteleWarningSymptom:
+        'Are you sure you want to delete this symptom? This action cannot be undone.',
+      deteleWarningRecord:
+        'Are you sure you want to delete this record? This action cannot be undone.',
       addFinancialRecord: 'Add Financial Record',
       personalIdPlaceholder: 'Enter personal ID',
-      enterBirthDate: 'აირჩიეთ დაბადების თარიღი',
+      enterBirthDate: 'Chose birth date',
+      backToListing: 'Back to Listing',
+      today: 'Today',
     },
   },
   ka: {
@@ -146,11 +153,17 @@ const resources = {
       verified: 'ვერიფიცირებული',
       otpFail: 'ერთჯერად პაროლი არასწორია',
       areYouSure: 'დარწმუნებლი ხართ?',
-      deteleWarning:
+      deteleWarningPatient:
         'დარწმუნებული ხართ, რომ გსურთ, წაშალოთ პაციენტი? თქვენ ქმედებას უკან ვერ დააბრუნებთ.',
+      deteleWarningSymptom:
+        'დარწმუნებული ხართ, რომ გსურთ, წაშალოთ სიმპტომი? თქვენ ქმედებას უკან ვერ დააბრუნებთ.',
+      deteleWarningRecord:
+        'დარწმუნებული ხართ, რომ გსურთ, წაშალოთ ჩანაწერი? თქვენ ქმედებას უკან ვერ დააბრუნებთ.',
       addFinancialRecord: 'ფინანსური ჩანაწერის დამატება',
       personalIdPlaceholder: 'შეიყვანეთ პირადი ნომერი',
       enterBirthDate: 'აირჩიეთ დაბადების თარიღი',
+      backToListing: 'სიაზე დაბრუნება',
+      today: 'დღეს',
     },
   },
 }

@@ -6,7 +6,7 @@ import { conditions, countries, statusOptions, statusOptionsKa } from '../helper
 import OtpModal from '../components/ui/modals/OtpModal'
 import ButtonWithIcon from '../components/ui/buttons/ButtonWithIcon'
 import SuccessButton from '../components/ui/buttons/SuccessButton'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import usePatient from '../hooks/usePatient'
 import DatePickerField from '../components/ui/inputs/DatePickerField'
 import { Gender, PatientForm } from '../types/GeneralTypes'
@@ -18,12 +18,17 @@ import FinancialRecordModal from '../components/ui/modals/FinancialRecordModal'
 import { patientValidation } from '../helpers/Validation'
 import PhoneNumberField from '../components/ui/inputs/PhoneNumberField'
 import NumberField from '../components/ui/inputs/NumberField'
+import SecondaryButton from '../components/ui/buttons/SecondaryButton'
+import SweetAlert from '../components/ui/modals/SweetAlert'
 
 const AddEditPatient = () => {
   const [otpModalOpen, setOtpModalOpen] = useState(false)
   const [openFinancialRecord, setOpenFinancialRecord] = useState(false)
+  const [symptomDeleteAlert, setSymptomDeleteAlert] = useState<number | null>(null)
+  const [recordDeleteAlert, setRecordDeleteAlert] = useState<number | null>(null)
 
   const { t, i18n } = useTranslation()
+  const navigate = useNavigate()
   const { id } = useParams()
 
   const hook = usePatient(Number(id))
@@ -60,6 +65,7 @@ const AddEditPatient = () => {
 
   return (
     <>
+      {/* OTP შესამოწმებელი მოდალი */}
       {otpModalOpen && (
         <OtpModal
           digitNumber={5}
@@ -75,6 +81,7 @@ const AddEditPatient = () => {
         />
       )}
 
+      {/* მოდალი ფინანსური ჩანაწერის დამატებაზე */}
       {openFinancialRecord && (
         <FinancialRecordModal
           isOpen={openFinancialRecord}
@@ -84,6 +91,29 @@ const AddEditPatient = () => {
         />
       )}
 
+      {/* Alert სიმპტომის წაშლის შესახებ */}
+      {symptomDeleteAlert !== null && (
+        <SweetAlert
+          key={`symptom-${symptomDeleteAlert}`}
+          isOpen={symptomDeleteAlert}
+          onClose={() => setSymptomDeleteAlert(null)}
+          onConfirm={handleRemoveSymptom}
+          firstText={t('areYouSure')}
+          text={t('deteleWarningSymptom')}
+        />
+      )}
+
+      {/* Alert ფინანსური ჩანაწერის წაშლის შესახებ */}
+      {recordDeleteAlert !== null && (
+        <SweetAlert
+          key={`record-${recordDeleteAlert}`}
+          isOpen={recordDeleteAlert}
+          onClose={() => setRecordDeleteAlert(null)}
+          onConfirm={handleRemoveFinancialRecord}
+          firstText={t('areYouSure')}
+          text={t('deteleWarningRecord')}
+        />
+      )}
       <div className='max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg mt-10 mb-10'>
         <div className='mb-6 text-center'>
           <h2 className='text-xl font-semibold text-gray-700 dark:text-gray-200'>
@@ -180,6 +210,7 @@ const AddEditPatient = () => {
                 label={t('birthDate')}
                 placeholder={t('enterBirthDate')}
                 required
+                hasToday
                 setFieldValue={form.setFieldValue}
                 value={form.values.birthDate}
                 error={form.errors.birthDate}
@@ -234,7 +265,15 @@ const AddEditPatient = () => {
                 setOtpModalOpen={setOtpModalOpen}
                 otpButtonDisabled={form.values.phoneNumber.length < 9}
                 otpVerified={form.values.phoneVerified}
-                handleChange={form.handleChange}
+                handleChange={(event) => {
+                  form.handleChange(event)
+                  console.log()
+                  if (event.target.value !== hook.state.phoneNumber) {
+                    form.setFieldValue('phoneVerified', false)
+                  } else {
+                    form.setFieldValue('phoneVerified', true)
+                  }
+                }}
                 value={form.values.phoneNumber}
                 error={form.errors.phoneNumber}
               />
@@ -281,7 +320,7 @@ const AddEditPatient = () => {
                   {/* Delete ღილაკი */}
                   <button
                     type='button'
-                    onClick={() => handleRemoveSymptom(index)}
+                    onClick={() => setSymptomDeleteAlert(index)}
                     className='absolute top-2 right-2 text-red-500 hover:text-red-700'
                   >
                     <IoMdTrash className='text-lg' />
@@ -411,7 +450,7 @@ const AddEditPatient = () => {
                         <div className='flex justify-center items-center'>
                           <button
                             type='button'
-                            onClick={() => handleRemoveFinancialRecord(index)}
+                            onClick={() => setRecordDeleteAlert(index)}
                             className='text-red-500 hover:text-red-700'
                           >
                             <IoMdTrash className='text-lg' />
@@ -426,7 +465,8 @@ const AddEditPatient = () => {
           </div>
         </div>
 
-        <div className='w-full flex justify-end mt-5'>
+        <div className='w-full flex justify-end mt-5 gap-4'>
+          <SecondaryButton text={t('backToListing')} onClick={() => navigate('/')} />
           <SuccessButton
             text={id ? t('updatePatient') : t('createPatient')}
             onClick={async () => {
