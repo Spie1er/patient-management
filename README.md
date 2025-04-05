@@ -56,3 +56,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+## **🔐 To login, use these credentials**
+- admin/admin123
+- appuser/user123
+- doctor/doctor123
